@@ -1,0 +1,82 @@
+[
+  {
+    "question": "schemes for minorities",
+    "cypher": "MATCH (s:Scheme)\nOPTIONAL MATCH (s)-[:DETAILS]->(desc:Description)\nOPTIONAL MATCH (s)-[:HAS_TAG]->(t:Tag)\nWHERE toLower(s.name) CONTAINS toLower(\"minority\")\n   OR toLower(s.objective) CONTAINS toLower(\"minority\")\n   OR toLower(desc.text) CONTAINS toLower(\"minority\")\n   OR toLower(t.name) CONTAINS toLower(\"minority\")\nRETURN s.name, s.objective, desc.text, t.name\nLIMIT 200"
+  },
+  {
+    "question": "schemes for disabled people",
+    "cypher": "MATCH (s:Scheme)\nOPTIONAL MATCH (s)-[:DETAILS]->(desc:Description)\nOPTIONAL MATCH (s)-[:HAS_TAG]->(t:Tag)\nWHERE toLower(s.name) CONTAINS toLower(\"disabled\")\n   OR toLower(s.objective) CONTAINS toLower(\"disabled\")\n   OR toLower(desc.text) CONTAINS toLower(\"disabled\")\n   OR toLower(t.name) CONTAINS toLower(\"disabled\")\nRETURN s.name, s.objective, desc.text, t.name\nLIMIT 200"
+  },
+  {
+    "question": "who founded kisan vikas scheme",
+    "cypher": "MATCH (s:Scheme)-[:FOUNDED_BY]->(f:Founder)\nWHERE toLower(s.name) CONTAINS toLower(\"kisan vikas\")\nRETURN s.name, f.name\nLIMIT 50"
+  },
+  {
+    "question": "schemes run by education department",
+    "cypher": "MATCH (s:Scheme)-[:LIES_UNDER]->(d:Department)\nWHERE toLower(d.name) CONTAINS toLower(\"education\")\nRETURN s.name, s.objective\nLIMIT 200"
+  },
+  {
+    "question": "schemes founded by mahatma gandhi",
+    "cypher": "MATCH (s:Scheme)-[:FOUNDED_BY]->(f:Founder)\nWHERE toLower(f.name) CONTAINS toLower(\"mahatma gandhi\")\nRETURN s.name, s.objective\nLIMIT 200"
+  },
+  {
+    "question": "how many schemes are available in maharashtra",
+    "cypher": "MATCH (s:Scheme)-[:HAS_LOCATION]->(sl:Location)\nWHERE toLower(sl.name) CONTAINS toLower(\"maharashtra\")\nRETURN count(s)\nLIMIT 50"
+  },
+  {
+    "question": "schemes under ministry of agriculture",
+    "cypher": "MATCH (s:Scheme)-[:LIES_UNDER]->(d:Department)\nWHERE toLower(d.name) CONTAINS toLower(\"agriculture\")\nRETURN s.name, s.objective\nLIMIT 200"
+  },
+  {
+    "question": "number of central schemes",
+    "cypher": "MATCH (s:Scheme)-[:IS_UNDER]->(sb:SchemeBy)\nWHERE toLower(sb.name) CONTAINS toLower(\"central\")\nRETURN count(s)\nLIMIT 50"
+  },
+  {
+    "question": "list all schemes by ministry of health",
+    "cypher": "MATCH (s:Scheme)-[:LIES_UNDER]->(d:Department)\nWHERE toLower(d.name) CONTAINS toLower(\"health\")\nRETURN s.name\nLIMIT 200"
+  },
+  {
+    "question": "schemes available in bihar",
+    "cypher": "MATCH (s:Scheme)-[:HAS_LOCATION]->(sl:Location)\nWHERE toLower(sl.name) CONTAINS toLower(\"bihar\")\nRETURN s.name, s.objective\nLIMIT 200"
+  },
+  {
+    "question": "schemes for women beneficiaries",
+    "cypher": "MATCH (s:Scheme)\nOPTIONAL MATCH (s)-[:DETAILS]->(desc:Description)\nWHERE toLower(s.name) CONTAINS toLower(\"women\")\n   OR toLower(desc.text) CONTAINS toLower(\"women\")\nRETURN s.name\nLIMIT 200"
+  },
+  {
+    "question": "schemes for farmers",
+    "cypher": "MATCH (s:Scheme)\nOPTIONAL MATCH (s)-[:DETAILS]->(desc:Description)\nWHERE toLower(s.name) CONTAINS toLower(\"farmer\")\nRETURN s.name, desc.text\nLIMIT 200"
+  },
+  {
+    "question": "schemes for students",
+    "cypher": "MATCH (s:Scheme)\nOPTIONAL MATCH (s)-[:DETAILS]->(desc:Description)\nWHERE toLower(s.name) CONTAINS toLower(\"student\")\nRETURN s.name, s.objective\nLIMIT 200"
+  },
+  {
+    "question": "schemes founded by mahatma gandhi",
+    "cypher": "MATCH (s:Scheme)-[:FOUNDED_BY]->(f:Founder)\nWHERE toLower(f.name) CONTAINS toLower(\"mahatma gandhi\")\nRETURN s.name\nLIMIT 200"
+  },
+  {
+    "question": "list schemes for farmers in patna",
+    "cypher": "MATCH (s:Scheme)-[:HAS_LOCATION]->(sl:Location)\nOPTIONAL MATCH (s)-[:DETAILS]->(desc:Description)\nOPTIONAL MATCH (s)-[:HAS_TAG]->(t:Tag)\nWHERE toLower(sl.name) CONTAINS toLower(\"patna\")\n  AND (toLower(s.name) CONTAINS toLower(\"farmer\")\n   )\nRETURN s.name, s.objective, desc.text, sl.name, t.name\nLIMIT 200"
+  },
+  {
+    "question": "scholarship schemes for students in maharashtra",
+    "cypher": "MATCH (s:Scheme)-[:HAS_LOCATION]->(sl:Location)\nOPTIONAL MATCH (s)-[:DETAILS]->(desc:Description)\nWHERE toLower(sl.name) CONTAINS toLower(\"maharashtra\")\n  AND (toLower(s.name) CONTAINS toLower(\"scholarship\")\n    OR toLower(desc.text) CONTAINS toLower(\"scholarship\")\n    OR toLower(s.objective) CONTAINS toLower(\"scholarship\")\n    OR toLower(s.name) CONTAINS toLower(\"student\"))\nRETURN s.name, s.objective, desc.text, sl.name\nLIMIT 200"
+  },
+  {
+    "question": "health schemes for women in bihar",
+    "cypher": "MATCH (s:Scheme)-[:HAS_LOCATION]->(sl:Location)\nOPTIONAL MATCH (s)-[:DETAILS]->(desc:Description)\nOPTIONAL MATCH (s)-[:HAS_TAG]->(t:Tag)\nWHERE toLower(sl.name) CONTAINS toLower(\"bihar\")\n  AND (toLower(s.name) CONTAINS toLower(\"health\")\n    OR toLower(s.objective) CONTAINS toLower(\"health\")\n    OR toLower(desc.text) CONTAINS toLower(\"health\"))\n  AND (toLower(s.name) CONTAINS toLower(\"women\")\n    OR toLower(desc.text) CONTAINS toLower(\"women\")\n    OR toLower(t.name) CONTAINS toLower(\"women\"))\nRETURN s.name, s.objective, desc.text, sl.name, t.name\nLIMIT 200"
+  },
+  {
+    "question": "employment schemes for youth in delhi",
+    "cypher": "MATCH (s:Scheme)-[:HAS_LOCATION]->(sl:Location)\nOPTIONAL MATCH (s)-[:DETAILS]->(desc:Description)\nWHERE toLower(sl.name) CONTAINS toLower(\"delhi\")\n  AND (toLower(s.name) CONTAINS toLower(\"employment\")\n    OR toLower(s.objective) CONTAINS toLower(\"employment\")\n    OR toLower(desc.text) CONTAINS toLower(\"employment\")\n    OR toLower(s.name) CONTAINS toLower(\"youth\"))\nRETURN s.name, s.objective, desc.text, sl.name\nLIMIT 200"
+  },
+  {
+    "question": "housing schemes for sc beneficiaries in uttar pradesh",
+    "cypher": "MATCH (s:Scheme)-[:HAS_LOCATION]->(sl:Location)\nOPTIONAL MATCH (s)-[:DETAILS]->(desc:Description)\nOPTIONAL MATCH (s)-[:HAS_TAG]->(t:Tag)\nWHERE toLower(sl.name) CONTAINS toLower(\"uttar pradesh\")\n  AND (toLower(s.name) CONTAINS toLower(\"housing\")\n    OR toLower(s.objective) CONTAINS toLower(\"housing\")\n    OR toLower(desc.text) CONTAINS toLower(\"housing\"))\n  AND (toLower(s.name) CONTAINS toLower(\"sc\")\n    OR toLower(desc.text) CONTAINS toLower(\"sc\")\n    OR toLower(t.name) CONTAINS toLower(\"sc\"))\nRETURN s.name, s.objective, desc.text, sl.name, t.name\nLIMIT 200"
+  },
+  {
+    "question": "schemes for disabled persons in karnataka",
+    "cypher": "MATCH (s:Scheme)-[:HAS_LOCATION]->(sl:Location)\nOPTIONAL MATCH (s)-[:DETAILS]->(desc:Description)\nOPTIONAL MATCH (s)-[:HAS_TAG]->(t:Tag)\nWHERE toLower(sl.name) CONTAINS toLower(\"karnataka\")\n  AND (toLower(s.name) CONTAINS toLower(\"disabled\")\n    OR toLower(s.objective) CONTAINS toLower(\"disabled\")\n    OR toLower(desc.text) CONTAINS toLower(\"disabled\")\n    OR toLower(t.name) CONTAINS toLower(\"disabled\"))\nRETURN s.name, s.objective, desc.text, sl.name, t.name\nLIMIT 200"
+  }
+]
