@@ -7,7 +7,7 @@
 
 A full-stack, voice-enabled Retrieval-Augmented Generation (RAG) chatbot designed to answer queries about Government Schemes. It leverages a **Local LLM** for natural language understanding, a **Neo4j Graph Database** for robust knowledge retrieval, and supports dual-language input/output in English and Marathi.
 
-## ✨ Features
+##  Features
 
 - **Knowledge Graph RAG:** Uses Neo4j to store government scheme data, allowing for complex, relationship-based queries instead of standard vector similarity searches.
 - **Local LLM Integration:** Translates user questions into precise Cypher queries to extract data directly from the knowledge graph.
@@ -19,7 +19,7 @@ A full-stack, voice-enabled Retrieval-Augmented Generation (RAG) chatbot designe
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - **Framework:** Vue 3 + Vite
@@ -35,7 +35,7 @@ A full-stack, voice-enabled Retrieval-Augmented Generation (RAG) chatbot designe
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```text
 ├── backend1/
@@ -58,7 +58,7 @@ A full-stack, voice-enabled Retrieval-Augmented Generation (RAG) chatbot designe
     ├── tailwind.config.js
     └── vite.config.js
 ```
-🚀 Getting Started
+ Getting Started
 Prerequisites
 Node.js (v16+)
 
@@ -113,7 +113,7 @@ Bash
 npm run dev
 The frontend will typically run on http://localhost:5173.
 
-⚙️ How It Works
+ How It Works
 User Input: The user types or speaks a question in English or Marathi.
 
 Translation: If the input is in Marathi, the Flask backend translates it to English.
@@ -124,7 +124,7 @@ Graph Execution: The Cypher query is executed against the Neo4j database to retr
 
 Response: The data is formatted, returned to the frontend via JSON, and optionally spoken aloud using the TTS engine.
 
-⚠️ Troubleshooting
+ Troubleshooting
 Microphone Not Working: Ensure you are accessing the frontend via localhost or 127.0.0.1 (Browsers block microphone access on insecure non-local domains). Make sure your browser supports the Web Speech API.
 
 Marathi Voice Recognition Issues: Make sure you explicitly select "Marathi" in the frontend dropdown before clicking the microphone icon.
